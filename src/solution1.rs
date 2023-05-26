@@ -5,19 +5,17 @@ struct Solution;
 // https://leetcode.com/problems/two-sum
 impl Solution {
     pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
-        let mut map: HashMap<&i32, usize> = HashMap::new();
-        for (i, e) in nums.iter().enumerate() {
-            map.insert(e, i);
+        let mut map: HashMap<i32, i32> = HashMap::new();
+        for (i, &e) in nums.iter().enumerate() {
+            map.insert(e, i as i32);
         }
-        for (i, e) in nums.iter().enumerate() {
+        for (i, &e) in nums.iter().enumerate() {
             let j = map.get(&(target - e));
             match j {
-                None => continue,
-                Some(it) => {
-                    if *it != i {
-                        return vec![i as i32, *it as i32];
-                    }
-                },
+                Some(&it) if it != i as i32 => {
+                    return vec![i as i32, it];
+                }
+                _ => continue,
             }
         }
         return nums;
