@@ -7,21 +7,7 @@ struct Solution;
 // 0,1
 impl Solution {
     pub fn length_of_last_word(s: String) -> i32 {
-        let mut count = 0;
-        let mut word = false;
-        for x in s.chars().rev() {
-            if !word && x == ' ' {
-                continue
-            } else {
-                word = true;
-            }
-            if x != ' ' {
-                count = count + 1;
-            } else {
-                break
-            }
-        }
-        count
+        s.trim_end().chars().rev().take_while(|c| c.is_alphabetic()).count() as i32
     }
 }
 
