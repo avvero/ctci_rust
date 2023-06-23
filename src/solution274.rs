@@ -11,11 +11,11 @@ impl Solution {
         let mut result = 0;
         for (i, &e) in citations.iter().rev().enumerate() {
             if e < (i + 1) as i32 {
-                break
+                break;
             }
             result = result + 1;
         }
-        return result
+        return result;
     }
 }
 
@@ -25,8 +25,8 @@ mod tests {
 
     #[test]
     fn test() {
-        assert_eq!(Solution::h_index(vec![3,0,6,1,5]), 3);
-        assert_eq!(Solution::h_index(vec![1,3,1]), 1);
-        assert_eq!(Solution::h_index(vec![0,1]), 1);
+        assert_eq!(Solution::h_index(vec![3, 0, 6, 1, 5]), 3);
+        assert_eq!(Solution::h_index(vec![1, 3, 1]), 1);
+        assert_eq!(Solution::h_index(vec![0, 1]), 1);
     }
 }
